@@ -19,10 +19,10 @@ import jakarta.persistence.Transient;
 
 @Entity
 public class User  implements Serializable{
+	public User() {
+		
+	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4413956990766566986L;
 	
 	@Id
