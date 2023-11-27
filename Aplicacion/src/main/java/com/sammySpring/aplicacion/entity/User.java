@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
 
+
+
+
 import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
@@ -16,6 +19,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Transient;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class User  implements Serializable{
@@ -29,19 +34,26 @@ public class User  implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="native")
 	@GenericGenerator(name="native",strategy="native")
 	private Long id;
-	
+
 	@Column
+	@NotBlank
+	@Size(min=5, max=8, message="No se cumple las reglas del tamaño")
 	private String fistName;
 	@Column
+	@NotBlank 
 	private String lastName;
 	@Column
+	@NotBlank
 	private String email;
 	@Column
+	@NotBlank
 	private String username;
 	@Column
+	@NotBlank
 	private String password;
 	
 	@Transient
+	@NotBlank
 	private String confirmPassword;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
