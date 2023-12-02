@@ -53,7 +53,7 @@ public class UserServicelmpl implements UserService	{
 
 	@Override
 	public User getUserById(Long id) throws Exception {
-		return repository.findById(id).orElseThrow(()-> new Exception("El usuario para editar no existe."));
+		return repository.findById(id).orElseThrow(()-> new Exception("El usuario no existe."));
 	}
 
 
@@ -71,4 +71,12 @@ public class UserServicelmpl implements UserService	{
 		to.setEmail(from.getEmail());
 		to.setRoles(from.getRoles());
 	}
+
+
+
+	@Override
+	public void deleteUser(Long id) throws Exception {
+	  User user = getUserById(id);
+	  repository.delete(user);
 	}
+}
